@@ -30,40 +30,56 @@ using namespace std;
 
 int main() {
 
+    // Declare integer variables for the currency denominations and a temporary balance.
     int cents{};
-    int dollers{};
+    int dollars{};
     int quarters{};
     int dimes{};
     int nickels{};
     int pennies{};
     int balance{};
 
-    cout <<"Enter an amount in cents: ";
+    // Prompt the user to enter a value for cents and read the input.
+    cout << "Enter an amount in cents: ";
     cin >> cents;
 
     cout << "You can provide the change as follows: ";
 
-    dollers = cents / 100;
-    balance = cents - (dollers * 100);
+    // Use a greedy algorithm to calculate the change, starting with the largest denomination.
 
+    // Calculate the number of dollars (100 cents).
+    dollars = cents / 100;
+    // Update the balance with the remaining cents.
+    balance = cents - (dollars * 100);
+
+    // Calculate the number of quarters (25 cents) from the remaining balance.
     quarters = balance / 25;
+    // Update the balance.
     balance -= quarters * 25;
 
+    // Calculate the number of dimes (10 cents).
     dimes = balance / 10;
+    // Update the balance.
     balance -= dimes * 10;
 
+    // Calculate the number of nickels (5 cents).
     nickels = balance / 5;
+    // Update the balance.
     balance -= nickels * 5;
 
+    // The remaining balance is the number of pennies.
     pennies = balance;
 
-    cout << "\ndollers: " << dollers << endl;
+    // Display the results to the user.
+    cout << "\ndollars: " << dollars << endl;
     cout << "quarters: " << quarters << endl;
     cout << "dimes: " << dimes << endl;
     cout << "nickels: " << nickels << endl;
     cout << "pennies: " << pennies << endl;
 
-    // Here we can use the modular symbol instead of subtracting for the balance
+    // The comment about using the modulo operator is a good suggestion.
+    // An alternative approach would be to use the modulo operator (%) to simplify the balance calculation.
+    // For example, instead of 'balance = cents - (dollars * 100);', you could use 'balance = cents % 100;'.
 
     return 0;
 
